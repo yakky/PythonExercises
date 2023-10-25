@@ -2,7 +2,7 @@ def evaluate_review(review):
     if review.vote > 6:
         return True
     else:
-        return True
+        return False
 
 
 def review_paper(reviewed_paper, reviews):
@@ -28,7 +28,7 @@ def review_paper(reviewed_paper, reviews):
     if editors_ok and reviewers_ok:
         reviewed_paper.accept = True
         return "accept", None, reviewed_paper
-    if not editors_ok or not reviewers_ok:
+    if not editors_ok and not reviewers_ok:
         reviewed_paper.accept = False
         return "revision", review_notes, reviewed_paper
     else:

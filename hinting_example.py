@@ -36,12 +36,12 @@ def review_paper(reviewed_paper, reviews):
     if editors_ok and reviewers_ok:
         reviewed_paper.accept = True
         return "accept", None, reviewed_paper
-    if not editors_ok or not reviewers_ok:
-        reviewed_paper.accept = False
-        return "revision", [vote[2] for vote in votes if not vote[1]], reviewed_paper
-    else:
+    elif not editors_ok and not reviewers_ok:
         reviewed_paper.accept = False
         return "declined", [vote[2] for vote in votes], reviewed_paper
+    else:
+        reviewed_paper.accept = False
+        return "revision", [vote[2] for vote in votes if not vote[1]], reviewed_paper
 
 
 paper = Paper()
